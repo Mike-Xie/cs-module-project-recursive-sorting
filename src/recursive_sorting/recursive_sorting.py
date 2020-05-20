@@ -45,16 +45,39 @@ def merge_sort(arr: list):
 
 # implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):
-	# Your code here
+	# pointer for start of second list 
+	start_second = mid + 1 
 
-
+	if arr[mid] <= arr[start_second]:
+		return
+	# while either of the list is not finished processing
+	# do nothing if the first is smaller since it'll be right place
+	# else have to shift everything
+	while (start <= mid and start_second <= end):
+		if (arr[start]) <= arr[start_second]:
+			start += 1
+		else:
+			temp_value = arr[start2]
+			index = start_second
+			# shift everything between the two by one
+			while (index != start):
+				arr[index] = arr[index - 1]
+				index = index - 1 
+			arr[start] = temp_value
+			# move all pointers by one 
+			start += 1
+			mid += 1
+			start_second += 1 
 	return arr
 
 
 def merge_sort_in_place(arr, l, r):
-	# Your code here
-
-
+	# almost same as above except with pointers
+	if (l < r):
+		mid = l + (r - l) //2
+		merge_in_place(arr, l, m)
+		merge_in_place(arr, m + 1, r)
+		merge_in_place(arr, l, m, r)
 	return arr
 
 
