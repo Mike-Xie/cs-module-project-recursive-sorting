@@ -57,7 +57,7 @@ def merge_in_place(arr, start, mid, end):
 		if (arr[start]) <= arr[start_second]:
 			start += 1
 		else:
-			temp_value = arr[start2]
+			temp_value = arr[start_second]
 			index = start_second
 			# shift everything between the two by one
 			while (index != start):
@@ -75,9 +75,9 @@ def merge_sort_in_place(arr, l, r):
 	# almost same as above except with pointers
 	if (l < r):
 		mid = l + (r - l) //2
-		merge_in_place(arr, l, m)
-		merge_in_place(arr, m + 1, r)
-		merge_in_place(arr, l, m, r)
+		merge_sort_in_place(arr, l, mid)
+		merge_sort_in_place(arr, mid + 1, r)
+		merge_in_place(arr, l, mid, r)
 	return arr
 
 
